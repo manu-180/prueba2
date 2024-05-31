@@ -38,9 +38,7 @@ dotenv.load_dotenv()
 DATABASE_URL = os.environ.get("DATABASE_URL")
 GOOGLE_APPLICATION_CREDENTIALS = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
 
-firebase_sdk = credentials.Certificate(
-    #f"C:\\Users\\Manuel\\Desktop\\Folder\\prueba2\\
-        GOOGLE_APPLICATION_CREDENTIALS)
+firebase_sdk = credentials.Certificate(GOOGLE_APPLICATION_CREDENTIALS)
 firebase_admin.initialize_app(firebase_sdk, {"databaseURL": DATABASE_URL})
 
 class FireBase():
@@ -185,5 +183,3 @@ app.add_page(index)
 # asyncio.create_task(check_database_periodically())
 # asyncio.create_task(handle_database_changes())
 
-if __name__ == "__main__":
-    app.run()
