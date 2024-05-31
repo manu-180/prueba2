@@ -3,6 +3,30 @@ import firebase_admin
 from firebase_admin import credentials, db
 import os
 import dotenv
+# import asyncio
+
+# # Función para verificar periódicamente la base de datos
+# async def check_database_periodically():
+#     while True:
+#         # Consulta la base de datos y verifica los cambios
+#         # Si hay cambios, actualiza dinámicamente la página
+#         await asyncio.sleep(10)  # Espera 10 segundos antes de volver a verificar
+
+# # Función para manejar los cambios en la base de datos
+# # Función para manejar los cambios en la base de datos
+# async def handle_database_changes():
+#     while True:
+#         # Verifica si hay cambios relevantes en la base de datos
+#         # Por ejemplo, verifica si algún horario ha alcanzado el límite de usuarios
+#         for horario in firebase.data():
+#             if horario.cant_users >= 4:
+#                 # Si un horario ha alcanzado el límite de usuarios, actualiza dinámicamente la página
+#                 index.update()
+
+#         # Espera un tiempo antes de volver a verificar
+#         await asyncio.sleep(10)  # Espera 10 segundos antes de volver a verificar
+
+
 
 class Horarios(rx.Base):
     id = int
@@ -14,7 +38,7 @@ dotenv.load_dotenv()
 DATABASE_URL = os.environ.get("DATABASE_URL")
 GOOGLE_APPLICATION_CREDENTIALS = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
 
-firebase_sdk = credentials.Certificate(GOOGLE_APPLICATION_CREDENTIALS)
+firebase_sdk = credentials.Certificate(f"C:\\Users\\Manuel\\Desktop\\Folder\\prueba2\\{GOOGLE_APPLICATION_CREDENTIALS}")
 firebase_admin.initialize_app(firebase_sdk, {"databaseURL": DATABASE_URL})
 
 class FireBase():
@@ -155,3 +179,9 @@ def button(id):
 
 app = rx.App()
 app.add_page(index)
+
+# asyncio.create_task(check_database_periodically())
+# asyncio.create_task(handle_database_changes())
+
+if __name__ == "__main__":
+    app.run()
